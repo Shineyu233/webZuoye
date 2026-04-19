@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript基础知识练习</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .section {
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .output {
+            background-color: #e8f4f8;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+            font-family: monospace;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript基础知识练习</h1>
+
+    <!-- 变量的定义 -->
+    <div class="section">
+        <h2>1. 变量的定义</h2>
+        <p>JavaScript中使用var、let、const定义变量</p>
+        <button onclick="testVariables()">测试变量定义</button>
+        <div class="output" id="variablesOutput"></div>
+    </div>
+
+    <!-- 变量类型 -->
+    <div class="section">
+        <h2>2. 变量类型</h2>
+        <p>JavaScript的基本数据类型</p>
+        <button onclick="testVariableTypes()">测试变量类型</button>
+        <div class="output" id="typesOutput"></div>
+    </div>
+
+    <!-- 表达式 -->
+    <div class="section">
+        <h2>3. 表达式</h2>
+        <p>算术、比较、逻辑表达式</p>
+        <button onclick="testExpressions()">测试表达式</button>
+        <div class="output" id="expressionsOutput"></div>
+    </div>
+
+    <!-- 流程控制 -->
+    <div class="section">
+        <h2>4. 流程控制</h2>
+        <p>if-else、switch、循环</p>
+        <button onclick="testFlowControl()">测试流程控制</button>
+        <div class="output" id="flowOutput"></div>
+    </div>
+
+    <!-- 函数 -->
+    <div class="section">
+        <h2>5. 函数</h2>
+        <p>函数定义和调用</p>
+        <button onclick="testFunctions()">测试函数</button>
+        <div class="output" id="functionsOutput"></div>
+    </div>
+
+    <script>
+        // 1. 变量的定义
+        function testVariables() {
+            var output = document.getElementById('variablesOutput');
+            
+            // 使用var定义变量
+            var name = '张三';
+            // 使用let定义变量
+            let age = 20;
+            // 使用const定义常量
+            const PI = 3.14159;
+            
+            output.innerHTML = `
+                var定义的变量: name = ${name}<br>
+                let定义的变量: age = ${age}<br>
+                const定义的常量: PI = ${PI}
+            `;
+        }
+
+        // 2. 变量类型
+        function testVariableTypes() {
+            var output = document.getElementById('typesOutput');
+            
+            var str = 'Hello';           // 字符串
+            var num = 123;               // 数字
+            var bool = true;             // 布尔值
+            var arr = [1, 2, 3];         // 数组
+            var obj = {name: '李四', age: 25};  // 对象
+            var undef;                   // undefined
+            var nul = null;              // null
+            
+            output.innerHTML = `
+                字符串: ${str} (类型: ${typeof str})<br>
+                数字: ${num} (类型: ${typeof num})<br>
+                布尔值: ${bool} (类型: ${typeof bool})<br>
+                数组: ${arr} (类型: ${typeof arr})<br>
+                对象: ${JSON.stringify(obj)} (类型: ${typeof obj})<br>
+                undefined: ${undef} (类型: ${typeof undef})<br>
+                null: ${nul} (类型: ${typeof nul})
+            `;
+        }
+
+        // 3. 表达式
+        function testExpressions() {
+            var output = document.getElementById('expressionsOutput');
+            
+            // 算术表达式
+            var sum = 10 + 5;
+            var difference = 10 - 5;
+            var product = 10 * 5;
+            var quotient = 10 / 5;
+            
+            // 比较表达式
+            var isEqual = (10 == '10');
+            var isStrictEqual = (10 === '10');
+            var isGreater = (10 > 5);
+            
+            // 逻辑表达式
+            var logicalAnd = (true && false);
+            var logicalOr = (true || false);
+            var logicalNot = !true;
+            
+            output.innerHTML = `
+                算术表达式:<br>
+                10 + 5 = ${sum}<br>
+                10 - 5 = ${difference}<br>
+                10 * 5 = ${product}<br>
+                10 / 5 = ${quotient}<br><br>
+                比较表达式:<br>
+                10 == '10' = ${isEqual}<br>
+                10 === '10' = ${isStrictEqual}<br>
+                10 > 5 = ${isGreater}<br><br>
+                逻辑表达式:<br>
+                true && false = ${logicalAnd}<br>
+                true || false = ${logicalOr}<br>
+                !true = ${logicalNot}
+            `;
+        }
+
+        // 4. 流程控制
+        function testFlowControl() {
+            var output = document.getElementById('flowOutput');
+            var result = '';
+            
+            // if-else
+            var score = 85;
+            if (score >= 90) {
+                result += '成绩等级: A<br>';
+            } else if (score >= 80) {
+                result += '成绩等级: B<br>';
+            } else if (score >= 70) {
+                result += '成绩等级: C<br>';
+            } else {
+                result += '成绩等级: D<br>';
+            }
+            
+            // switch
+            var day = 3;
+            var dayName;
+            switch (day) {
+                case 1:
+                    dayName = '星期一';
+                    break;
+                case 2:
+                    dayName = '星期二';
+                    break;
+                case 3:
+                    dayName = '星期三';
+                    break;
+                default:
+                    dayName = '其他';
+            }
+            result += `今天是: ${dayName}<br>`;
+            
+            // for循环
+            result += '1-5的数字: ';
+            for (var i = 1; i <= 5; i++) {
+                result += i + ' ';
+            }
+            result += '<br>';
+            
+            // while循环
+            var count = 0;
+            result += 'while循环计数: ';
+            while (count < 3) {
+                result += count + ' ';
+                count++;
+            }
+            
+            output.innerHTML = result;
+        }
+
+        // 5. 函数
+        function testFunctions() {
+            var output = document.getElementById('functionsOutput');
+            
+            // 函数声明
+            function add(a, b) {
+                return a + b;
+            }
+            
+            // 函数表达式
+            var subtract = function(a, b) {
+                return a - b;
+            };
+            
+            // 箭头函数
+            var multiply = (a, b) => a * b;
+            
+            // 调用函数
+            var sum = add(10, 5);
+            var difference = subtract(10, 5);
+            var product = multiply(10, 5);
+            
+            output.innerHTML = `
+                函数声明 (add): 10 + 5 = ${sum}<br>
+                函数表达式 (subtract): 10 - 5 = ${difference}<br>
+                箭头函数 (multiply): 10 * 5 = ${product}
+            `;
+        }
+    </script>
+</body>
+</html>
